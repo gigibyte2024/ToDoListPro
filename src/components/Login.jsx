@@ -1,47 +1,51 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import Image7 from './Image7.jpg';
+import backgroundImage from './Image101.jpeg'; // image in components folder
+import logoImage from './Image100.jpeg'; // also using same image inside box (change if you want)
 
-const LoginPage = () => {
+function Login() {
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    alert('You have filled the form!');
-    navigate('/home');
+    navigate('/main'); // redirect to to-do list
   };
 
   return (
-    <div className='wrapper'>
-      <div className='form-box'>
-        <form onSubmit={handleSubmit}>
-          <h1 style={{ color: "black" }}>Login</h1>
+    <div
+      className="login-page"
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
+      <div className="overlay"></div>
 
-          <div className="input-box">
-            <input type='text' placeholder='Username' required style={{ color: 'white' }} />
-          </div>
-
-          <div className="input-box">
-            <input type='password' placeholder='Password' required style={{ color: 'white' }} />
-          </div>
-
-          <div className="remember-forget">
-            <label style={{ color: 'black' }}>
-              <input type='checkbox' /> Remember Me
-            </label>
-            <a href='#'>Forgot Password</a>
-          </div>
-
-          <button type="submit">LogIn</button>
+        <div className="login-box">
+        <p>Login Page</p>
+        <img src={logoImage} alt="Login Visual" className="login-image" />
+        <form onSubmit={handleLogin} className="login-form">
+          <input
+            type="email"
+            placeholder="Email"
+            className="input-field"
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="input-field"
+            required
+          />
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </form>
-      </div>
 
-      <div className='right'>
-        <img src={Image7} alt='Image7' />
+        <p className="signup-text">
+          Don’t have an account? <span className="signup-link">Sign up</span>
+        </p>
       </div>
     </div>
   );
-};
+}
 
-export default LoginPage;
+export default Login;

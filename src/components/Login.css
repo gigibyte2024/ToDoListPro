@@ -1,82 +1,119 @@
-/* .wrapper {
-    height: 100vh; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-  }
-  
-  .form-box {
-    width: 400px;
-    padding: 40px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   
-  }
-  
-*{
-    background-color: rgb(255, 255, 255);
-} */
-
-/* Login.css */
-
-.wrapper {
-    height: 100vh; 
-    width: 100%;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    background-color: #f8f8f8;
-} 
-
-.form-box {
-    width: 400px;
-    padding: 40px;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-}
-
-.input-box {
-    margin-bottom: 20px;
-}
-
-.input-box input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #682c2c;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #333;
-}
-
-.remember-forget {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-/* ✨ New Added for right side image */
-.right img {
+/* Full-screen background */
+.login-page {
+    width: 100vw;
     height: 100vh;
-    width: 100vh;
-    object-fit: cover;
-    margin-left: 20vh;
-}
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  p{
+    font-size: 30px;
+    color:whitesmoke;
+    font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif
+  }
+  /* Green translucent overlay */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(41, 11, 5, 0.856); /* green with transparency */
+    z-index: 1;
+  }
+  
+  /* Green login box */
+  .login-box {
+    position: relative;
+    z-index: 2;
+    background: #c7c7c77c; /* deep green */
+    width: 350px;
+    padding: 30px 25px;
+    border: 2px solid green;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(141, 236, 141, 0.949);
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+      
+  }
+  
+  /* Heading text */
+  .login-heading {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .login-image {
+    width: 300px;
+    height: 200px;
+    /* object-fit: cover; */
+    margin-bottom: 15px;
+    border-radius: 5%;
+    border: 2px solid rgb(0, 0, 0);
+  }
+  
+  
+  /* Input fields */
+  /* .login-form .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+  } */
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .input-field {
+    width: 300px;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    background-color:  rgb(218, 218, 218);
+    color:white
+  }
+  
+  
+  /* Green login button */
+  .login-button {
+    width: 150px;
+    padding: 10px;
+    background-color:  rgb(104, 50, 50);
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  /* Sign-up text */
+  .signup-text {
+    margin-top: 15px;
+    font-size: 14px;
+    color: white;
+  }
+  
+  .signup-link {
+    font-weight: bold;
+    color: #ffcccb;
+    cursor: pointer;
+  }
+  
