@@ -1,4 +1,3 @@
-// Main.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import watermelon from './watermelon.png';
 import Image45 from './Image45.png';
@@ -11,6 +10,10 @@ export default function Main() {
     const editableRef = useRef(null);
     const [isEditingHovered, setIsEditingHovered] = useState(false);
     const [isEditingEmpty, setIsEditingEmpty] = useState(true);
+    const [tasks, setTasks] = useState({});
+    const [editingTask, setEditingTask] = useState(null);
+    const [expandedDay, setExpandedDay] = useState(null);
+    const [notes, setNotes] = useState({});
 
     useEffect(() => {
         const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -23,50 +26,40 @@ export default function Main() {
         setIsEditingEmpty(text.trim() === '');
     };
 
-    const [tasks, setTasks] = useState({});
-const [editingTask, setEditingTask] = useState(null);
+    const updateTask = (day, index, value) => {
+        setTasks(prev => ({
+            ...prev,
+            [day]: {
+                ...prev[day],
+                [index]: value
+            }
+        }));
+    };
 
-const updateTask = (day, index, value) => {
-    setTasks(prev => ({
-        ...prev,
-        [day]: {
-            ...prev[day],
-            [index]: value
-        }
-    }));
-};
-
-    const [expandedDay, setExpandedDay] = useState(null);
-    const [notes, setNotes] = useState({});
-    
     const toggleDay = (day) => {
         if (expandedDay === day) {
-            setExpandedDay(null); // Close the section if clicked again
+            setExpandedDay(null);
         } else {
-            setExpandedDay(day); // Open the section for the clicked day
+            setExpandedDay(day);
         }
     };
-    
+
     const handleNoteChange = (day, value) => {
         setNotes(prev => ({
             ...prev,
             [day]: value
         }));
     };
-    
-
 
     const handleAddTask = (day) => {
         if (!newTaskText.trim()) return;
         const task = { id: Date.now(), name: newTaskText, done: false };
-
         setTasksByDate(prev => {
             const updated = { ...prev };
             if (!updated[day]) updated[day] = [];
             updated[day].push(task);
             return updated;
         });
-
         setNewTaskText('');
     };
 
@@ -140,7 +133,7 @@ const updateTask = (day, index, value) => {
                 <img src={Image45} alt="Banner" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
 
-            {/* Watermelon Image + Title */}
+            {/* Watermelon Title Section */}
             <div style={{
                 position: 'relative',
                 width: '100%',
@@ -161,7 +154,6 @@ const updateTask = (day, index, value) => {
                         }}
                     />
                 </div>
-
                 <div style={{ padding: '5px 10px', marginTop: '5px' }}>
                     <h3 style={{
                         color: "#F5F5F5",
@@ -171,7 +163,6 @@ const updateTask = (day, index, value) => {
                     }}>
                         Weekly-Planner
                     </h3>
-
                     <div
                         onMouseEnter={() => setIsEditingHovered(true)}
                         onMouseLeave={() => setIsEditingHovered(false)}
@@ -207,10 +198,11 @@ const updateTask = (day, index, value) => {
                 </div>
             </div>
 
+            {/* Divider */}
             <hr style={{ border: '1px solid grey', width: '100%', margin: '0' }} />
             <hr style={{ border: '1px solid grey', width: '100%', marginBottom: '0px' }} />
 
-            {/* Clock, Spotify, and To-Do Boxes */}
+            {/* MAIN CONTENT: Clock, Spotify, Widgets, Calendar */}
             <div style={{
                 display: 'flex',
                 padding: '40px 60px',
@@ -219,46 +211,95 @@ const updateTask = (day, index, value) => {
                 alignItems: 'flex-start',
                 justifyContent: 'space-between'
             }}>
-                {/* Left Side - Clock and Spotify */}
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {/* Left Panel with widgets */}
+                <div>
                     {/* Clock */}
                     <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '100%',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        height: '250px'
+                        flex: 1, display: 'flex', flexDirection: 'column', gap: '20px'
                     }}>
-                        <iframe
-                            src="https://widgetbox.app/embed/clock/digital/661c12ed-30a0-4fba-a790-5f9e0f3118a0"
-                            title="Clock"
-                            style={{
-                                border: 'none',
-                                width: '100%',
-                                height: '100%'
-                            }}
-                        />
+                        <div style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '100%',
+                            borderRadius: '12px',
+                            overflow: 'hidden',
+                            height: '250px'
+                        }}>
+                            <iframe
+                                src="https://widgetbox.app/embed/clock/digital/661c12ed-30a0-4fba-a790-5f9e0f3118a0"
+                                title="Clock"
+                                style={{ border: 'none', width: '100%', height: '100%' }}
+                            />
+                        </div>
                     </div>
 
                     {/* Spotify */}
-                    <div style={{
-                        marginTop: '20px',
-                        width: '100%',
-                        borderRadius: '12px',
-                        overflow: 'hidden'
-                    }}>
+                    <div style={{ marginTop: '20px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
                         <iframe
                             style={{ borderRadius: '12px' }}
-                            src="https://open.spotify.com/embed/playlist/5cmSk2LLhQ3uHB6I26X9kI?utm_source=generator" 
+                            src="https://open.spotify.com/embed/playlist/5cmSk2LLhQ3uHB6I26X9kI?utm_source=generator"
                             width="100%"
                             height="352"
                             frameBorder="0"
                             allowFullScreen
                             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                             loading="lazy"
+                        ></iframe>
+                    </div>
+
+                    {/* Weather */}
+                    <div style={{
+                        marginTop: '30px',
+                        width: '100%',
+                        borderRadius: '12px',
+                        overflow: 'hidden',
+                        height: '250px'
+                    }}>
+                        <iframe
+                            src="https://indify.co/widgets/live/weather/SsAHC001gCiE7HguaCun"
+                            title="Weather"
+                            style={{
+                                border: 'none',
+                                width: '100%',
+                                height: '100%',
+                                borderRadius: '12px'
+                            }}
+                        ></iframe>
+                    </div>
+
+                    {/* Divider Lines */}
+                    <hr style={{ width: '100%', borderTop: '1px solid #444', margin: '20px 0' }} />
+
+                    <hr style={{ width: '100%', borderTop: '1px solid #444', margin: '20px 0' }} />
+
+
+                    {/* To-Do Section */}
+                    <div style={{
+                        backgroundColor: '#1e2b23',
+                        border: '1px solid #3a5641',
+                        borderRadius: '12px',
+                        padding: '20px',
+                        color: '#eee'
+                    }}>
+                        <h4 style={{ marginBottom: '10px', color: '#9be79e' }}>Daily Quick To-Do</h4>
+                        <ul style={{ paddingLeft: '20px', fontSize: '15px' }}>
+                            <li>🌱 Morning walk</li>
+                            <li>📚 30 min study</li>
+                            <li>🧘 Meditate 10 min</li>
+                            <li>✅ Review checklist</li>
+                        </ul>
+                    </div>
+
+                    {/* Google Calendar */}
+                    <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
+                        <iframe
+                            src="https://ilovewatermelon.notion.site/6d2ea03ab1544d97a1c0b759f4484ea1?v=00eee7fec39b403e94c679a1f20bc9da&pvs=4"
+                            style={{ border: 0, width: '100%', height: '400px' }}
+                            frameBorder="0"
+                            scrolling="no"
+                            title="Calendar"
                         ></iframe>
                     </div>
                 </div>
@@ -337,7 +378,7 @@ const updateTask = (day, index, value) => {
         // backgroundColor: '#1e2b23',
         // borderRadius: '12px',
         // border: '1px solid #3a5641',
-        padding: '20px',
+        padding: '0px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -407,12 +448,12 @@ const updateTask = (day, index, value) => {
 
     {/* Pomofocus Embed */}
     <div style={{ marginTop: '40px' }}>
-        <h4 style={{ color: '#9be79e', marginBottom: '10px' }}>Pomodoro Timer</h4>
+        <h4 style={{ color: '#9be79e', marginBottom: '10px' }}></h4>
         <iframe
             src="https://pomofocus.io/"
             style={{
                 width: '100%',
-                height: '300px',
+                height: '250px',
                 minHeight: '200px',  // Match height to task boxes
                 border: 'none',
                 borderRadius: '10px',
@@ -423,11 +464,10 @@ const updateTask = (day, index, value) => {
     </div>
 </div>
 
-
-
-
-
             </div>
+
+            
         </>
     );
 }
+
