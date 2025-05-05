@@ -1,48 +1,40 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import backgroundImage from './Image101.jpeg'; // image in components folder
-import logoImage from './Image100.jpeg'; // also using same image inside box (change if you want)
+import { useNavigate } from 'react-router-dom';
+import Image100 from './Image100.jpeg';
+import Image101 from './Image101.jpeg';
 
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
-    navigate('/main'); // redirect to to-do list
+    navigate('/main');
   };
 
   return (
     <div
       className="login-page"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url(${Image101})` }}
     >
-      <div className="overlay"></div>
+      <div className="login-container">
+        {/* Left side image */}
+        <div className="left-image">
+          <img src={Image100} alt="Login Illustration" />
+        </div>
 
-        <div className="login-box">
-        <p>Login Page</p>
-        <img src={logoImage} alt="Login Visual" className="login-image" />
-        <form onSubmit={handleLogin} className="login-form">
-          <input
-            type="email"
-            placeholder="Email"
-            className="input-field"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="input-field"
-            required
-          />
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
-
-        <p className="signup-text">
-          Don’t have an account? <span className="signup-link">Sign up</span>
-        </p>
+        {/* Right side form */}
+        <div className="login-form-box">
+          <h2>Login Page</h2>
+          <form onSubmit={handleLogin}>
+            <input type="email" placeholder="Email" required />
+            <input type="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+          <p>
+            Don’t have an account? <span className="signup">Sign up</span>
+          </p>
+        </div>
       </div>
     </div>
   );

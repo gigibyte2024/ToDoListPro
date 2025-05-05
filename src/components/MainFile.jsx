@@ -281,7 +281,8 @@ export default function Main() {
                         border: '1px solid #3a5641',
                         borderRadius: '12px',
                         padding: '20px',
-                        color: '#eee'
+                        color: '#eee',
+                        width: "20rem"
                     }}>
                         <h4 style={{ marginBottom: '10px', color: '#9be79e' }}>Daily Quick To-Do</h4>
                         <ul style={{ paddingLeft: '20px', fontSize: '15px' }}>
