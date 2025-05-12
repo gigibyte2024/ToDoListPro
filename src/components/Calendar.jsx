@@ -105,7 +105,7 @@ export default function Calendar() {
                                 onClick={() => addNewTask(section)}
                                 style={{ color: '#888', cursor: 'pointer' }}
                             >
-                                + New page
+                                + Add 
                             </p>
                         </div>
                     ))}
