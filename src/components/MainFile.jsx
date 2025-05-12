@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import watermelon from './watermelon.png';
 import Image45 from './Image45.png';
+import { Link } from 'react-router-dom';
+
 
 export default function Main() {
     const [tasksByDate, setTasksByDate] = useState({});
@@ -125,6 +127,22 @@ export default function Main() {
                     }}>
                         Share
                     </button>
+                    <Link
+    to="/calendar"
+    style={{
+        fontSize: '14px',
+        backgroundColor: '#222',
+        color: '#fff',
+        padding: '4px 10px',
+        border: '1px solid #444',
+        borderRadius: '6px',
+        cursor: 'pointer',
+        textDecoration: 'none'
+    }}
+>
+    Calendar
+</Link>
+
                 </div>
             </div>
 {/* code for the banner(dont edit now)  */}
@@ -245,12 +263,6 @@ export default function Main() {
                             loading="lazy"
                         ></iframe>
                     </div>
-
-
-
-
-
-
                 </div>
 
              {/* Middle - Weekly Boxes */}
