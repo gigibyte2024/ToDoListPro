@@ -127,13 +127,12 @@ export default function Main() {
                     </button>
                 </div>
             </div>
-
-            {/* Banner */}
+{/* code for the banner(dont edit now)  */}
             <div style={{ width: '100%', height: '30vh', overflow: 'hidden' }}>
                 <img src={Image45} alt="Banner" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
 
-            {/* Watermelon Title Section */}
+{/* Watermelon Title Section */}
             <div style={{
                 position: 'relative',
                 width: '100%',
@@ -197,12 +196,10 @@ export default function Main() {
                     </div>
                 </div>
             </div>
-
-            {/* Divider */}
             <hr style={{ border: '1px solid grey', width: '100%', margin: '0' }} />
             <hr style={{ border: '1px solid grey', width: '100%', marginBottom: '0px' }} />
 
-            {/* MAIN CONTENT: Clock, Spotify, Widgets, Calendar */}
+{/* MAIN CONTENT: Clock, Spotify, Widgets, Calendar */}
             <div style={{
                 display: 'flex',
                 padding: '40px 60px',
@@ -213,7 +210,7 @@ export default function Main() {
             }}>
                 {/* Left Panel with widgets */}
                 <div>
-                    {/* Clock */}
+ {/* Clock widget*/}
                     <div style={{
                         flex: 1, display: 'flex', flexDirection: 'column', gap: '20px'
                     }}>
@@ -235,7 +232,7 @@ export default function Main() {
                         </div>
                     </div>
 
-                    {/* Spotify */}
+{/* Spotify widget*/}
                     <div style={{ marginTop: '20px', width: '100%', borderRadius: '12px', overflow: 'hidden' }}>
                         <iframe
                             style={{ borderRadius: '12px' }}
@@ -249,60 +246,11 @@ export default function Main() {
                         ></iframe>
                     </div>
 
-                    {/* Weather */}
-                    <div style={{
-                        marginTop: '30px',
-                        width: '100%',
-                        borderRadius: '12px',
-                        overflow: 'hidden',
-                        height: '250px'
-                    }}>
-                        <iframe
-                            src="https://indify.co/widgets/live/weather/SsAHC001gCiE7HguaCun"
-                            title="Weather"
-                            style={{
-                                border: 'none',
-                                width: '100%',
-                                height: '100%',
-                                borderRadius: '12px'
-                            }}
-                        ></iframe>
-                    </div>
-
-                    {/* Divider Lines */}
-                    <hr style={{ width: '100%', borderTop: '1px solid #444', margin: '20px 0' }} />
-
-                    <hr style={{ width: '100%', borderTop: '1px solid #444', margin: '20px 0' }} />
 
 
-                    {/* To-Do Section */}
-                    <div style={{
-                        backgroundColor: '#1e2b23',
-                        border: '1px solid #3a5641',
-                        borderRadius: '12px',
-                        padding: '20px',
-                        color: '#eee',
-                        width: "20rem"
-                    }}>
-                        <h4 style={{ marginBottom: '10px', color: '#9be79e' }}>Daily Quick To-Do</h4>
-                        <ul style={{ paddingLeft: '20px', fontSize: '15px' }}>
-                            <li>🌱 Morning walk</li>
-                            <li>📚 30 min study</li>
-                            <li>🧘 Meditate 10 min</li>
-                            <li>✅ Review checklist</li>
-                        </ul>
-                    </div>
 
-                    {/* Google Calendar */}
-                    <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-                        <iframe
-                            src="https://ilovewatermelon.notion.site/6d2ea03ab1544d97a1c0b759f4484ea1?v=00eee7fec39b403e94c679a1f20bc9da&pvs=4"
-                            style={{ border: 0, width: '100%', height: '400px' }}
-                            frameBorder="0"
-                            scrolling="no"
-                            title="Calendar"
-                        ></iframe>
-                    </div>
+
+
                 </div>
 
              {/* Middle - Weekly Boxes */}
@@ -374,11 +322,7 @@ export default function Main() {
         </div>
     ))}
 
-    {/* Embedded Widget as Separate Grid Item */}
     <div style={{
-        // backgroundColor: '#1e2b23',
-        // borderRadius: '12px',
-        // border: '1px solid #3a5641',
         padding: '0px',
         display: 'flex',
         alignItems: 'center',
