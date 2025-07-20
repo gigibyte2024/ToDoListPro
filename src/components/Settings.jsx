@@ -1,28 +1,37 @@
-
-import React from 'react';import ThemeToggle from '../components/ThemeToggle';
+import React, { useEffect, useState } from 'react';
+import ThemeToggle from '../components/ThemeToggle';
 import ReminderSettings from '../components/ReminderSettings';
 import ProfileInfo from '../components/ProfileInfo';
+import './Settings.css'; // Import external CSS
 
 export default function Settings() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Detect dark mode from class or localStorage if you use that
+    const darkMode = document.documentElement.classList.contains('dark');
+    setIsDarkMode(darkMode);
+  }, []);
+
   return (
-    <div className="p-6 max-w-xl mx-auto bg-white dark:bg-gray-900 text-gray-800 dark:text-white rounded-xl shadow-lg">
-      <h2 className="text-2xl font-bold mb-4">Settings</h2>
+    <div className={`settings-container ${isDarkMode ? 'dark' : ''}`}>
+      <h2 className="settings-title">Settings</h2>
 
       <ProfileInfo />
-      <hr className="my-4" />
+      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
       <ThemeToggle />
-      <hr className="my-4" />
+      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
       <ReminderSettings />
-      <hr className="my-4" />
+      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
       <button
         onClick={() => {
           localStorage.removeItem('user');
           window.location.href = '/login'; // redirect
         }}
-        className="mt-6 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
+        className="logout-button"
       >
         Logout
       </button>

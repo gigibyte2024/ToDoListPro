@@ -1,4 +1,3 @@
-// components/ReminderSettings.jsx
 import React, { useState } from 'react';
 
 export default function ReminderSettings() {
