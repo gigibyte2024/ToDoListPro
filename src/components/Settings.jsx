@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import ThemeToggle from '../components/ThemeToggle';
 import ReminderSettings from '../components/ReminderSettings';
 import ProfileInfo from '../components/ProfileInfo';
 import './Settings.css'; // Import external CSS
@@ -40,4 +39,3 @@ export default function Settings() {
     </div>
   );
 }
-

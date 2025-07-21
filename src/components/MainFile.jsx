@@ -4,6 +4,9 @@ import Image45 from './Image45.png';
 import { Link } from 'react-router-dom';
 
 
+// import Login from "./components/Login"
+
+
 export default function Main() {
     const [tasksByDate, setTasksByDate] = useState({});
     const [selectedDate, setSelectedDate] = useState('');
@@ -88,6 +91,15 @@ export default function Main() {
             </div>
         ));
     };
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+useEffect(() => {
+  const handleResize = () => setWindowWidth(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  return () => window.removeEventListener('resize', handleResize);
+}, []);
+
 
     return (
         <>
@@ -234,20 +246,25 @@ export default function Main() {
             <hr style={{ border: '1px solid grey', width: '100%', marginBottom: '0px' }} />
 
 {/* MAIN CONTENT: Clock, Spotify, Widgets, Calendar */}
-            <div style={{
-                display: 'flex',
-                padding: '40px 60px',
-                gap: '30px',
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                justifyContent: 'space-between'
-            }}>
+<div style={{
+    display: 'flex',
+    padding: windowWidth < 768 ? '20px' : '40px 60px',
+    gap: '30px',
+    flexDirection: windowWidth < 768 ? 'column' : 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between'
+}}>
+
                 {/* Left Panel with widgets */}
                 <div>
  {/* Clock widget*/}
-                    <div style={{
-                        flex: 1, display: 'flex', flexDirection: 'column', gap: '20px'
-                    }}>
+ <div style={{
+    flex: 1,
+    marginRight: windowWidth < 768 ? '0' : '20px',
+    width: '100%',
+    marginBottom: windowWidth < 768 ? '20px' : '0'
+}}>
+
                         <div style={{
                             display: 'flex',
                             flexDirection: 'column',
@@ -282,14 +299,15 @@ export default function Main() {
                 </div>
 
              {/* Middle - Weekly Boxes */}
-<div style={{
+             <div style={{
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gridTemplateColumns: windowWidth < 768 ? '1fr' : 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '20px',
     flex: 2,
     fontFamily: 'Poppins, sans-serif',
     color: '#ddd'
 }}>
+
     {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map(day => (
         <div key={day} style={{
             backgroundColor: '#1e2b23',
@@ -376,10 +394,12 @@ export default function Main() {
 {/* Right Side - Weekly To-Do's */}
 <div style={{
     flex: 1,
-    padding: '20px',
+    width: '100%',
+    padding: windowWidth < 768 ? '10px 0' : '20px',
     fontFamily: 'Poppins, sans-serif',
     color: '#ccc',
 }}>
+
     <h3 style={{ marginBottom: '30px', color: '#9be79e' }}>Weekly to-do's</h3>
     <ul style={{ listStyleType: 'none', paddingLeft: 0, margin: 0 }}>
         {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day, index) => (
