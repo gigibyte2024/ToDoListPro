@@ -14,27 +14,30 @@ export default function Settings() {
   }, []);
 
   return (
-    <div className={`settings-container ${isDarkMode ? 'dark' : ''}`}>
-      <h2 className="settings-title">Settings</h2>
+    <div className="page-wrapper">
+      <div className={`settings-container ${isDarkMode ? 'dark' : ''}`}>
+        <h2 className="settings-title">Settings</h2>
 
-      <ProfileInfo />
-      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
+        <ProfileInfo />
+        <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
-      <ThemeToggle />
-      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
+        <ThemeToggle />
+        <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
-      <ReminderSettings />
-      <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
+        <ReminderSettings />
+        <hr className={`settings-divider ${isDarkMode ? 'dark' : ''}`} />
 
-      <button
-        onClick={() => {
-          localStorage.removeItem('user');
-          window.location.href = '/login'; // redirect
-        }}
-        className="logout-button"
-      >
-        Logout
-      </button>
+        <button
+          onClick={() => {
+            localStorage.removeItem('user');
+            window.location.href = '/login'; // redirect
+          }}
+          className="logout-button"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
+
