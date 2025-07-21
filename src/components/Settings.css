@@ -1,0 +1,51 @@
+/* Settings.css */
+
+.settings-container {
+    padding: 1.5rem;
+    max-width: 36rem; /* Tailwind's max-w-xl */
+    margin: 0 auto;
+    background-color: white;
+    color: #1f2937; /* gray-800 */
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .settings-container.dark {
+    background-color: #111827; /* Tailwind's gray-900 */
+    color: white;
+  }
+  
+  .settings-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .settings-divider {
+    margin: 1rem 0;
+    border: none;
+    border-top: 1px solid #e5e7eb; /* gray-200 */
+  }
+  
+  .settings-divider.dark {
+    border-top: 1px solid #374151; /* gray-700 */
+  }
+  
+  .logout-button {
+    margin-top: 1.5rem;
+    background-color: #ef4444; /* red-500 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border: none;
+  }
+  
+  .logout-button:hover {
+    background-color: #dc2626; /* red-600 */
+  }
+  
+  
